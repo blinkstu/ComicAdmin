@@ -22,6 +22,7 @@ const mutations = {
 const actions = {
   changeSetting({ commit }, data) {
     commit('CHANGE_SETTING', data)
+    localStorage.setItem(data.key, data.value)
   }
 }
 

@@ -70,6 +70,36 @@ export default {
       }
     }
   },
+  created() {
+    const theme = localStorage.getItem('theme')
+    const fixedHeader = localStorage.getItem('fixedHeader')
+    const tagsView = localStorage.getItem('tagsView')
+    const sidebarLogo = localStorage.getItem('sidebarLogo')
+    if (theme) {
+      this.$store.dispatch('settings/changeSetting', {
+        key: 'theme',
+        value: theme
+      })
+    }
+    if (fixedHeader) {
+      this.$store.dispatch('settings/changeSetting', {
+        key: 'fixedHeader',
+        value: fixedHeader === 'true'
+      })
+    }
+    if (tagsView) {
+      this.$store.dispatch('settings/changeSetting', {
+        key: 'tagsView',
+        value: tagsView === 'true'
+      })
+    }
+    if (sidebarLogo) {
+      this.$store.dispatch('settings/changeSetting', {
+        key: 'sidebarLogo',
+        value: sidebarLogo === 'true'
+      })
+    }
+  },
   methods: {
     themeChange(val) {
       this.$store.dispatch('settings/changeSetting', {

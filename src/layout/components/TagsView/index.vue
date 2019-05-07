@@ -8,6 +8,7 @@
         :class="isActive(tag)?'active':''"
         :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
         tag="span"
+        :style="isActive(tag)?'background:'+theme:'' "
         class="tags-view-item"
         @click.middle.native="closeSelectedTag(tag)"
         @contextmenu.prevent.native="openMenu(tag,$event)"
@@ -56,6 +57,9 @@ export default {
     },
     routes() {
       return this.$store.state.permission.routes
+    },
+    theme() {
+      return this.$store.state.settings.theme
     }
   },
   watch: {
@@ -230,9 +234,9 @@ export default {
         margin-right: 15px;
       }
       &.active {
-        background-color: #42b983;
+        //background-color: #42b983;
         color: #fff;
-        border-color: #42b983;
+        //border-color: #42b983;
         &::before {
           content: '';
           background: #fff;
